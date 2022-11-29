@@ -1,10 +1,11 @@
-const canvas1 = document.getElementById('canvas');
-canvas1.width = window.innerWidth, canvas1.height = window.innerHeight;
+const canvas = document.getElementById('canvas');
+canvas.width = window.innerWidth, canvas.height = window.innerHeight;
+const ray = { x: canvas.width / 2, y: canvas.height / 2 }
+const rand = (i) => Math.floor(Math.random() * i) + 1;
+const Tool = new Build();
 
-var Tool = new Construct('2d', canvas1.width / 2, canvas1.height / 2);
-var report = document.getElementById('Info');
-
-function Report(d) {
-  if(report.innerText.split('').length != 0) return;
-  report.innerText = `${report.innerText}\n${d}`;
-}
+Tool.Set([rand(window.innerWidth), rand(window.innerHeight)],
+         [rand(window.innerWidth), rand(window.innerHeight)]);
+Tool.Wall();
+Tool.Ray(ray.x, ray.y, 0, 20);
+Tool.Dot(ray.x, ray.y, 'black', 5);
