@@ -15,6 +15,20 @@ function Interpl(a, b, c, d) {
   }
 }
 
+function Translate(r) {
+  if(r >= 0) {
+    return Math.abs(r - Math.PI * 2) * (180 / Math.PI);
+  }
+  return Math.abs(r) * (180 / Math.PI);
+}
+
+function Translate2(r) {
+  if(r >= 0) {
+    return Math.abs(r - Math.PI * 2);
+  }
+  return Math.abs(r);
+}
+
 function Lerp(a, b, t) {
   return a + (b - a) * t;
 }
