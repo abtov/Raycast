@@ -33,8 +33,12 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 (async function() {
   let promised = await RequestHandler(params.map) || [];
-  if('error' in promised || !promised) return console.log(promised);
-  promised.seed.forEach((i) => Tool.Set(...i));
   const main = new Main('Doc', Calculate)
   main.Create();
+  if('error' in promised || !promised) {
+    console.log(promised);
+    Tool.Walls = nDefault;
+    return;
+  }
+  promised.seed.forEach((i) => Tool.Set(...i));
 })()
